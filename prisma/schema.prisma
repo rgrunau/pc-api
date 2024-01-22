@@ -37,4 +37,20 @@ model User {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
   practiceSessions PracticeSession[]
+  userProfile UserProfile?
+  userProfileId Int?
+}
+
+model UserProfile {
+  id Int @id @default(autoincrement())
+  user User @relation(fields: [userId], references: [id])
+  userId Int @unique 
+  bio String
+  location String
+  website String
+  avatar String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([userId])
 }
