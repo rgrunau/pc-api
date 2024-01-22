@@ -5,6 +5,7 @@ import { createUser } from "./user/createUser";
 import { getSignInUser } from "./user/getSignInUser";
 import { upload, uploadFile } from "./helpers/uploadHelper";
 import { Request } from "express";
+import { getUserProfile } from "./user/getUserProfile";
 
 //@ts-ignore
 declare module "express-serve-static-core" {
@@ -22,6 +23,7 @@ app.use(
 app.use(express.json());
 app.post("/api/user/create", createUser);
 app.get("/api/user/get-user", getSignInUser);
+app.get("/api/user/user-profile", getUserProfile);
 app.post(
   "/api/user/profile-uploads",
   upload.single("avatar"),
