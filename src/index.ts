@@ -23,6 +23,7 @@ app.use(
 app.use(express.json());
 app.post("/api/user/create", createUser);
 app.get("/api/user/get-user", getSignInUser);
+// app.post("/api/user/create-profile", createUserProfile)
 app.get("/api/user/user-profile", getUserProfile);
 app.post(
   "/api/user/profile-uploads",

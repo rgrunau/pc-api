@@ -1,6 +1,5 @@
 import "dotenv/config";
 import fs from "fs";
-import path from "path";
 import { S3Client, PutObjectAclCommand } from "@aws-sdk/client-s3";
 import multer from "multer";
 
