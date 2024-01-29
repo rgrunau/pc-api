@@ -10,6 +10,9 @@ export const getSignInUser = async (req: Request, res: Response) => {
       where: {
         email: req.query.email as string,
       },
+      include: {
+        userProfile: true,
+      },
     })) as User;
     console.log("user found");
     if (!result) {

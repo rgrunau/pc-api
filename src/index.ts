@@ -3,9 +3,10 @@ import express from "express";
 import cors from "cors";
 import { createUser } from "./user/createUser";
 import { getSignInUser } from "./user/getSignInUser";
+import { updateUserProfile } from "./user/updateUserProfile";
 import { upload, uploadFile } from "./helpers/uploadHelper";
 import { Request } from "express";
-import { getUserProfile } from "./user/getUserProfile";
+import { getUser } from "./user/getUser";
 
 //@ts-ignore
 declare module "express-serve-static-core" {
@@ -21,10 +22,11 @@ app.use(
   })
 );
 app.use(express.json());
+app.patch("/api/user/update-profile/:id", updateUserProfile);
 app.post("/api/user/create", createUser);
 app.get("/api/user/get-user", getSignInUser);
 // app.post("/api/user/create-profile", createUserProfile)
-app.get("/api/user/user-profile", getUserProfile);
+app.get("/api/user/user-profile", getUser);
 app.post(
   "/api/user/profile-uploads",
   upload.single("avatar"),

@@ -13,16 +13,17 @@ generator client {
 
 model PracticeSession {
   id Int @id @default(autoincrement())
-  title String
-  description String
-  startTime DateTime
-  endTime DateTime
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+  title String
+  description String
+  startTime DateTime?
+  endTime DateTime?
+  duration Int?
   user User @relation(fields: [userId], references: [id])
   userId Int
-  notes String
-  uploadedFiles String
+  notes String?
+  uploadedFiles String?
   isPublic Boolean @default(false)
   @@index([userId])
 }

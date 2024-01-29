@@ -36,6 +36,19 @@ export const createUser = async (req: Request, res: Response) => {
         message: "error",
         data: "profile not created",
       });
+    } else {
+      await prisma.user.update({
+        where: {
+          id: result.id,
+        },
+        data: {
+          userProfile: {
+            connect: {
+              id: profile.id,
+            },
+          },
+        },
+      });
     }
     res.json({
       message: "success",
