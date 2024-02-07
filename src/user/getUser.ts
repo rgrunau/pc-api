@@ -8,6 +8,9 @@ export const getUserProfile = async (userId: number) => {
       where: {
         userId,
       },
+      include: {
+        instruments: true,
+      }
     });
     console.log("profile result", result);
     return result;

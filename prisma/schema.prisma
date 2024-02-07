@@ -15,8 +15,8 @@ model PracticeSession {
   id Int @id @default(autoincrement())
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
-  title String
-  description String
+  title String?
+  description String?
   startTime DateTime?
   endTime DateTime?
   duration Int?
@@ -44,7 +44,7 @@ model User {
 model Instrument {
   id Int @id @default(autoincrement())
   name String @unique
-  userProfile   UserProfile @relation(fields: [userProfileId], references: [id])  
+  userProfile   UserProfile @relation(fields: [userProfileId], references: [id])
   userProfileId Int
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
@@ -55,7 +55,7 @@ model UserProfile {
   id Int @id @default(autoincrement())
   screenName String @unique
   user User @relation(fields: [userId], references: [id])
-  userId Int @unique 
+  userId Int @unique
   bio String?
   location String?
   instruments Instrument[]
