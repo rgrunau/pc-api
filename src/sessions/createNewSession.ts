@@ -13,6 +13,7 @@ export const createNewSession = async (req: Request, res: Response) => {
         description: "New Session",
       },
     });
+    console.log(result);
     res.json({
       message: "success",
       data: result,

@@ -9,6 +9,8 @@ import { addInstrument } from "./intstruments/addInstrument";
 import { Request } from "express";
 import { getUser } from "./user/getUser";
 import { createNewSession } from "./sessions/createNewSession";
+import { endSession } from "./sessions/endSession";
+import { getUserSessions } from "./sessions/getUserSessions";
 
 //@ts-ignore
 declare module "express-serve-static-core" {
@@ -45,8 +47,9 @@ app.post(
     }
   },
 );
+app.get("/api/sessions/get/:id", getUserSessions);
 app.post("/api/sessions/create", createNewSession);
-
+app.patch("/api/sessions/end", endSession);
 app.listen(3000, () => {
   console.log("Server is running on port 3000");
 });
